@@ -6,7 +6,7 @@ Use a virtual background in your videocalls using the Agora SDK on React Native
 * \>= react native 0.59.10
 * iOS SDK 9.0+
 * Android 5.0+
-* A valid Agora account [Sign up](https://dashboard.agora.io/en/) for free.
+* An Agora account ([Sign up here](https://sso.agora.io/en/signuputm_source=github&utm_repo=Agora-RN-VirtualBackground))
 
 Open the specified ports in [Firewall Requirements](https://docs.agora.io/en/Agora%20Platform/firewall?platform=All%20Platforms) if your network has a firewall.
 
