@@ -13,6 +13,7 @@ import RtcEngine, {
   RtcLocalView,
   RtcRemoteView,
   VideoRenderMode,
+  VirtualBackgroundBlurDegree,
   VirtualBackgroundSource,
   VirtualBackgroundSourceStateReason,
   VirtualBackgroundSourceType,
@@ -102,10 +103,18 @@ export default class App extends Component<Props, State> {
   }
 
   useColor = () => {
-    let color = new Color(1, 0, 0);
+    let color = new Color(255, 0, 255);
     this.virtualSource = new VirtualBackgroundSource({
       backgroundSourceType: VirtualBackgroundSourceType.Color,
       color: color,
+    });
+    this.setState({waiting: false});
+  }
+
+  useBlur = () => {
+    this.virtualSource = new VirtualBackgroundSource({
+      backgroundSourceType: VirtualBackgroundSourceType.Blur,
+      blur_degree: VirtualBackgroundBlurDegree.Medium
     });
     this.setState({waiting: false});
   }
@@ -196,22 +205,22 @@ export default class App extends Component<Props, State> {
               <TouchableOpacity onPress={this.pickImage} style={styles.button}>
                 <Text style={styles.buttonText}> Pick Image </Text>
               </TouchableOpacity>
-
               <TouchableOpacity onPress={this.useBundledImage} style={styles.button}>
                 <Text style={styles.buttonText}> Use Asset </Text>
               </TouchableOpacity>
-
-
+            </View>
+            <View style={styles.buttonHolder}>
               <TouchableOpacity onPress={this.useColor} style={styles.button}>
                 <Text style={styles.buttonText}> Use Color </Text>
               </TouchableOpacity>
+              <TouchableOpacity onPress={this.useBlur} style={styles.button}>
+                <Text style={styles.buttonText}> Use Blur </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.buttonHolder}>
-
               <TouchableOpacity onPress={this.startCall} style={this.state.waiting ? styles.buttonDisabled : styles.button} disabled={this.state.waiting}>
                 <Text style={styles.buttonText}> Start Call </Text>
               </TouchableOpacity>
-
               <TouchableOpacity onPress={this.endCall} style={styles.button}>
                 <Text style={styles.buttonText}> End Call </Text>
               </TouchableOpacity>
